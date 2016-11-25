@@ -37,7 +37,9 @@ public class DeclaracionVariablesBoolean {
 	}else{
              estado=false;
              System.err.println("Error 4004B");
+             char a[][];
 	}
+        
     }
     void estadoDVB1(String lexema){
 	if(lexema.equals("VARIABLE")){
@@ -46,7 +48,6 @@ public class DeclaracionVariablesBoolean {
 	}else{ estado=false;
 		System.err.println("Error de sintaxis DVB1");
 	}
-
     }
     void estadoDVB2(String lexema){
 	
