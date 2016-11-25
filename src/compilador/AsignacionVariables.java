@@ -14,35 +14,29 @@ import java.util.ArrayList;
 public class AsignacionVariables {
 
     private ArrayList<String> cinta;
+    private ArrayList<Integer> numero_lineas;
     private boolean estado = true;
 
-    public AsignacionVariables(ArrayList<String> cinta) {
+    public AsignacionVariables(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
         this.cinta = cinta;
-        estadoAV1(this.cinta.get(0));
+        this.numero_lineas = numero_lineas;
+        estadoAV2(this.cinta.get(0));
     }
-
+    
     public ArrayList<String> getCinta() {
         return cinta;
     }
 
+    public ArrayList<Integer> getNumero_lineas() {
+        return numero_lineas;
+    }
+    
     public boolean isEstado() {
         return estado;
     }
     
-    
 
-    void estadoAV1(String lexema) {
-        if (lexema.equals("VARIABLE")) {
-            cinta.remove(0);
-            estadoAV2(cinta.get(0));
-        } else {
-            estado=false;
-            System.err.println("error de sitaxis AV1");
-        }
-
-    }
-
-    void estadoAV2(String lexema) {
+    void estadoAV2(String lexema) {numero_lineas.remove(0);
         if (lexema.equals("SAME")) {
             cinta.remove(0);
             estadoAV3(cinta.get(0));
@@ -51,11 +45,11 @@ public class AsignacionVariables {
             estadoAV4(cinta.get(0));
         } else {
             estado=false;
-            System.err.println("erorr de sintaxis AV2");
+            System.err.println("erorr de sintaxis AV2-line:  "+ numero_lineas.get(0));
         }
     }
 
-    void estadoAV3(String lexema) {
+    void estadoAV3(String lexema) {numero_lineas.remove(0);
         if (lexema.equals("VALORNUM")||lexema.equals("VALORBOOL")||lexema.equals("VALORTEXTO")) {
             cinta.remove(0);
             estadoAV6(cinta.get(0));
@@ -64,31 +58,31 @@ public class AsignacionVariables {
             estadoAV7(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("error de sitaxis AV3");
+            System.err.println("error de sitaxis AV3-line:  "+ numero_lineas.get(0));
         }
     }
 
-    void estadoAV4(String lexema) {
+    void estadoAV4(String lexema) {numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("VARIABLE")||lexema.equalsIgnoreCase("VALORNUM")) {
             cinta.remove(0);
             estadoAV5(cinta.get(0));
         } else {
             estado=false;
-            System.err.println("error de sitaxis AV4");
+            System.err.println("error de sitaxis AV4-line:  "+ numero_lineas.get(0));
         }
 
     }
-     void estadoAV5(String lexema) {
+     void estadoAV5(String lexema) {numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("COR2")) {
             cinta.remove(0);
             estadoAV2(cinta.get(0));
         } else {
             estado=false;
-            System.err.println("erorr de sintaxis AV5");
+            System.err.println("erorr de sintaxis AV5-line:  "+ numero_lineas.get(0));
         }
     }
 
-    void estadoAV6(String lexema) {
+    void estadoAV6(String lexema) {numero_lineas.remove(0);
         if (lexema.equals("ARITMETICO")||lexema.equals("MAS")||lexema.equals("OR")
                 ||lexema.equals("AND")||lexema.equals("OPLOGICO")) {
             cinta.remove(0);
@@ -98,11 +92,11 @@ public class AsignacionVariables {
             estadoAV8();
         }else {
             estado=false;
-            System.err.println("erorr de sintaxis AV6");
+            System.err.println("erorr de sintaxis AV6-line:  "+ numero_lineas.get(0));
         }
     }
 
-    void estadoAV7(String lexema) {
+    void estadoAV7(String lexema) {numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("ENDLINE")) {
             cinta.remove(0);
             estadoAV8();
@@ -111,7 +105,7 @@ public class AsignacionVariables {
             estadoAV11(cinta.get(0));
         } else {
             estado=false;
-            System.err.println("erorr de sintaxis AV7");
+            System.err.println("erorr de sintaxis AV7-line:  "+ numero_lineas.get(0));
         }
     }
 
@@ -123,18 +117,18 @@ public class AsignacionVariables {
         System.out.println("Asignacion Exitosa");
     }
 
-    void estadoAV9(String lexema) {
+    void estadoAV9(String lexema) {numero_lineas.remove(0);
 
         if (lexema.equals("COR2")) {
             cinta.remove(0);
             estadoAV10(cinta.get(0));
         } else {
             estado=false;
-            System.err.println("erorr de sintaxis AV9");
+            System.err.println("erorr de sintaxis AV9-line:  "+ numero_lineas.get(0));
         }
     }
 
-    void estadoAV10(String lexema) {
+    void estadoAV10(String lexema) {numero_lineas.remove(0);
 
         if (lexema.equalsIgnoreCase("ENDLINE")) {
             cinta.remove(0);
@@ -145,18 +139,18 @@ public class AsignacionVariables {
             estadoAV3(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("erorr de sintaxis AV10");
+            System.err.println("erorr de sintaxis AV10-line:  "+ numero_lineas.get(0));
         }
     }
 
-    void estadoAV11(String lexema) {
+    void estadoAV11(String lexema) {numero_lineas.remove(0);
 
         if (lexema.equalsIgnoreCase("VARIABLE")||lexema.equalsIgnoreCase("VALORNUM")) {
             cinta.remove(0);
             estadoAV9(cinta.get(0));
         } else {
             estado=false;
-            System.err.println("erorr de sintaxis AV11");
+            System.err.println("erorr de sintaxis AV11-line:  "+ numero_lineas.get(0));
         }
     }
 
