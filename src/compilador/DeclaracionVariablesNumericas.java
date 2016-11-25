@@ -121,7 +121,7 @@ public class DeclaracionVariablesNumericas {
 
     void estadoDV4(String lexema) {
 
-        if (lexema.equals("VALORMUN") || lexema.equals("VARIABLE") || lexema.equals("FUNCION")) {
+        if (lexema.equals("VALORNUM") || lexema.equals("VARIABLE") || lexema.equals("FUNCION")) {
             cinta.remove(0);
             estadoDV5(cinta.get(0));
         } else {

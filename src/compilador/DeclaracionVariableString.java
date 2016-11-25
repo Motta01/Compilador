@@ -117,7 +117,7 @@ public class DeclaracionVariableString {
 
     void estadoDVS4(String lexema){
 	
-            if(lexema.equals("VARIABLE")||lexema.equals("FUNCION")||lexema.equals("VALORTEXT")){
+            if(lexema.equals("VARIABLE")||lexema.equals("FUNCION")||lexema.equals("VALORTEXTO")){
                         cinta.remove(0);
                         estadoDVS5(cinta.get(0));
         }else{
