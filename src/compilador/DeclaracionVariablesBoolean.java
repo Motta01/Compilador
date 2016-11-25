@@ -40,7 +40,7 @@ public class DeclaracionVariablesBoolean {
 	}
     }
     void estadoDVB1(String lexema){
-	if(lexema.equals("CAMPTEXT")){
+	if(lexema.equals("VARIABLE")){
 		cinta.remove(0);
 		estadoDVB2(cinta.get(0));
 	}else{ estado=false;
@@ -69,7 +69,7 @@ public class DeclaracionVariablesBoolean {
 
     void estadoDVB3(String lexema){
 	
-            if(lexema.equals("VALORBOLEANO")||lexema.equals("FUNCION")||lexema.equals("CAMPTEXT")){
+            if(lexema.equals("VALORBOOL")||lexema.equals("FUNCION")||lexema.equals("VARIABLE")){
                         cinta.remove(0);
                         estadoDVB6(cinta.get(0));
             }else{ estado=false;
@@ -91,7 +91,7 @@ public class DeclaracionVariablesBoolean {
 	
     }
     void estadoDVB7(String lexema){
-	if(lexema.equals("CAMPTEXT")){
+	if(lexema.equals("VARIABLE")){
 			cinta.remove(0);
 			estadoDVB8(cinta.get(0));
 	}else{
@@ -116,7 +116,7 @@ public class DeclaracionVariablesBoolean {
 
     void estadoDVB4(String lexema){
 	
-            if(lexema.equals("VALORBOLEANO")||lexema.equals("FUNCION")||lexema.equals("CAMPTEXT")){
+            if(lexema.equals("VALORBOOL")||lexema.equals("FUNCION")||lexema.equals("VARIABLE")){
                         cinta.remove(0);
                         estadoDVB5(cinta.get(0)); 
             }else{
@@ -151,7 +151,7 @@ public class DeclaracionVariablesBoolean {
         if(lexema.equalsIgnoreCase("COR2")){
             cinta.remove(0);
             estadoDVB12(cinta.get(0));
-        }else if(lexema.equals("CAMPNUM")||lexema.equals("CAMPTEXT")||lexema.equals("FUNCION")){
+        }else if(lexema.equals("VALORNUM")||lexema.equals("VARIABLE")||lexema.equals("FUNCION")){
             cinta.remove(0);
             estadoDVB11(cinta.get(0));
         }else{
@@ -184,7 +184,7 @@ public class DeclaracionVariablesBoolean {
         }
     }
     void estadoDVB13(String lexema){
-        if(lexema.equals("CAMPNUM")||lexema.equals("CAMPTEXT")||lexema.equals("FUNCION")){
+        if(lexema.equals("VALORNUM")||lexema.equals("VARIABLE")||lexema.equals("FUNCION")){
             cinta.remove(0);
             estadoDVB14(cinta.get(0));
         }else if(lexema.equalsIgnoreCase("COR2")){

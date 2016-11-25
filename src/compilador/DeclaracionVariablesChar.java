@@ -37,7 +37,7 @@ public class DeclaracionVariablesChar {
 	}
     }
     void estadoDVC1(String lexema){
-	if(lexema.equals("CAMPTEXT")){
+	if(lexema.equals("VARIABLE")){
 		cinta.remove(0);
 		estadoDVC2(cinta.get(0));
 	}else{
@@ -67,28 +67,15 @@ public class DeclaracionVariablesChar {
     }
 
     void estadoDVC3(String lexema){
-	if(lexema.equals("COMILLASIMPLE")){
-                cinta.remove(0);
-                lexema=cinta.get(0);
+	
             if(lexema.equals("FUNCION")||lexema.equals("CHARACT")){
-                        cinta.remove(0);
-                        lexema=cinta.get(0);
-                    if(lexema.equals("COMILLASIMPLE")){
+                    
                         cinta.remove(0);
                         estadoDVC6(cinta.get(0));
-                    }else{
-                         estado=false;
-                        System.err.println("Error de sintaxis faltan comillas DVC3");
-                    }
-                     
             }else{
-                 estado=false;
-            System.err.println("Error al declarar la variable DVC3");
-            }
-        }else{
              estado=false;
             System.err.println("Error de sitaxis faltan comillas DVC3");
-        }
+            }
     }
     
     void estadoDVC6(String lexema){
@@ -102,7 +89,7 @@ public class DeclaracionVariablesChar {
 	
     }
     void estadoDVC7(String lexema){
-	if(lexema.equals("CAMPTEXT")){
+	if(lexema.equals("VARIABLE")){
 			cinta.remove(0);
 			estadoDVC8(cinta.get(0));
 	}else{
@@ -126,28 +113,14 @@ public class DeclaracionVariablesChar {
     }
 
     void estadoDVC4(String lexema){
-	if(lexema.equals("COMILLASIMPLE")){
-                cinta.remove(0);
-                lexema=cinta.get(0);
+	
             if(lexema.equals("FUNCION")||lexema.equals("CHARACT")){
                         cinta.remove(0);
-                        lexema=cinta.get(0);
-                    if(lexema.equals("COMILLASIMPLE")){
-                        cinta.remove(0);
                         estadoDVC5(cinta.get(0));
-                    }else{
-                         estado=false;
-                        System.err.println("Error de sintaxis faltan comillas DVC4");
-                    }
-                     
             }else{
-                 estado=false;
-            System.err.println("Error al declarar la variable DVC4");
-            }
-        }else{
              estado=false;
             System.err.println("Error de sitaxis faltan comillas DVC4");
-        }
+            }
     }
     void estadoDVC5(String lexema){
 	
@@ -174,7 +147,7 @@ public class DeclaracionVariablesChar {
         if(lexema.equalsIgnoreCase("COR2")){
             cinta.remove(0);
             estadoDVC12(cinta.get(0));
-        }else if(lexema.equals("CAMPNUM")||lexema.equals("CAMPTEXT")||lexema.equals("FUNCION")){
+        }else if(lexema.equals("VALORNUM")||lexema.equals("VARIABLE")||lexema.equals("FUNCION")){
             cinta.remove(0);
             estadoDVC11(cinta.get(0));
         }else{ estado=false;
@@ -204,7 +177,7 @@ public class DeclaracionVariablesChar {
         }
     }
     void estadoDVC13(String lexema){
-        if(lexema.equals("CAMPNUM")||lexema.equals("CAMPTEXT")||lexema.equals("FUNCION")){
+        if(lexema.equals("VALORNUM")||lexema.equals("VARIABLE")||lexema.equals("FUNCION")){
             cinta.remove(0);
             estadoDVC14(cinta.get(0));
         }else if(lexema.equalsIgnoreCase("COR2")){

@@ -40,7 +40,7 @@ public class DeclaracionVariablesNumericas {
     }
 
     void estadoDV1(String lexema) {
-        if (lexema.equals("CAMPTEXT")) {
+        if (lexema.equals("VARIABLE")) {
             cinta.remove(0);
             estadoDV2(cinta.get(0));
         } else {
@@ -71,7 +71,7 @@ public class DeclaracionVariablesNumericas {
     }
 
     void estadoDV7(String lexema) {
-        if (lexema.equals("CAMPTEXT")) {
+        if (lexema.equals("VARIABLE")) {
             cinta.remove(0);
             estadoDV8(cinta.get(0));
         } else {
@@ -96,7 +96,7 @@ public class DeclaracionVariablesNumericas {
 
     void estadoDV3(String lexema) {
 
-        if (lexema.equals("CAMPNUM") || lexema.equals("FUNCION") || lexema.equals("CAMPTEXT")) {
+        if (lexema.equals("VALORNUM") || lexema.equals("FUNCION") || lexema.equals("VARIABLE")) {
             cinta.remove(0);
             estadoDV6(cinta.get(0));
         } else {
@@ -109,7 +109,7 @@ public class DeclaracionVariablesNumericas {
         if (lexema.equalsIgnoreCase("ENDLINE")) {
             cinta.remove(0);
             estadoDV9();
-        } else if (lexema.equals("ARITMETICO")) {
+        } else if (lexema.equals("ARITMETICO")||lexema.equals("MAS")) {
             cinta.remove(0);
             estadoDV3(cinta.remove(0));
         } else {
@@ -121,7 +121,7 @@ public class DeclaracionVariablesNumericas {
 
     void estadoDV4(String lexema) {
 
-        if (lexema.equals("CAMPNUM") || lexema.equals("CAMPTEXT") || lexema.equals("FUNCION")) {
+        if (lexema.equals("VALORMUN") || lexema.equals("VARIABLE") || lexema.equals("FUNCION")) {
             cinta.remove(0);
             estadoDV5(cinta.get(0));
         } else {
@@ -158,7 +158,7 @@ public class DeclaracionVariablesNumericas {
         if (lexema.equalsIgnoreCase("COR2")) {
             cinta.remove(0);
             estadoDV12(cinta.get(0));
-        } else if (lexema.equals("CAMPNUM") || lexema.equals("CAMPTEXT") || lexema.equals("FUNCION")) {
+        } else if (lexema.equals("VALORNUM") || lexema.equals("VARIABLE") || lexema.equals("FUNCION")) {
             cinta.remove(0);
             estadoDV11(cinta.get(0));
         } else {
@@ -194,7 +194,7 @@ public class DeclaracionVariablesNumericas {
     }
 
     void estadoDV13(String lexema) {
-        if (lexema.equals("CAMPNUM") || lexema.equals("CAMPTEXT") || lexema.equals("FUNCION")) {
+        if (lexema.equals("VALORNUM") || lexema.equals("VARIABLE") || lexema.equals("FUNCION")) {
             cinta.remove(0);
             estadoDV14(cinta.get(0));
         } else if (lexema.equalsIgnoreCase("COR2")) {
