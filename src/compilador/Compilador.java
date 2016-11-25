@@ -15,8 +15,8 @@ public class Compilador {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        AnalizadorSintactico analizador_sintactico = new AnalizadorSintactico();
-        analizador_sintactico.analizar();
+//        AnalizadorSintactico analizador_sintactico = new AnalizadorSintactico();
+//        analizador_sintactico.analizar();
 //        AnalizadorLexico analizador_lexico = new AnalizadorLexico();
         
 //        System.out.println(analizador_lexico.obtenerLexemas(cadena));
