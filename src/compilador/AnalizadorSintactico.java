@@ -21,26 +21,14 @@ public class AnalizadorSintactico {
         this.cinta.add("START");//inicio
         this.cinta.add("KEY1");
 
-        this.cinta.add("KEY1");
-        this.cinta.add("KEY2");
-
-        this.cinta.add("IF");
+        this.cinta.add("VARIABLE");
         this.cinta.add("PAR1");
+//        this.cinta.add("LOGICO");
         this.cinta.add("VARIABLE");
-        this.cinta.add("LOGICO");
+        this.cinta.add("COMA");
         this.cinta.add("VARIABLE");
-        this.cinta.add("AND");
-        this.cinta.add("VALORBOOL");
-        this.cinta.add("PAR2");
-        this.cinta.add("ENDLINE");
-
-        this.cinta.add("IF");
-        this.cinta.add("PAR1");
+        this.cinta.add("MAS");
         this.cinta.add("VARIABLE");
-        this.cinta.add("LOGICO");
-        this.cinta.add("IF");
-        this.cinta.add("AND");
-        this.cinta.add("VALORBOOL");
         this.cinta.add("PAR2");
         this.cinta.add("ENDLINE");
 
@@ -53,29 +41,16 @@ public class AnalizadorSintactico {
 
         this.numero_lineas.add(2);
         this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
+        this.numero_lineas.add(2);
 
         this.numero_lineas.add(3);
         this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
-
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-        this.numero_lineas.add(4);
-
-        this.numero_lineas.add(5);
-        this.numero_lineas.add(5);
     }
 
     public void analizar() {
@@ -238,16 +213,16 @@ public class AnalizadorSintactico {
         System.out.println("variable");
         this.numero_lineas.remove(0);
         if (lexema.equals("PAR1")) {
-            this.cinta.remove(0);
+//            this.cinta.remove(0);
             try {
                 ValidadorParametosLlamada validador_parametros = new ValidadorParametosLlamada(this.cinta, this.numero_lineas);
                 validador_parametros.analizar();
                 this.cinta = validador_parametros.getCinta();
                 this.numero_lineas = validador_parametros.getNumero_lineas();
+                System.out.println(this.cinta.get(0));
                 if (!validador_parametros.getError()) {
-//                    p3(this.cinta.get(0));
+                    p2(this.cinta.get(0));
                 }
-
             } catch (Exception e) {
                 System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
                 System.out.println("Token esperado: '('");

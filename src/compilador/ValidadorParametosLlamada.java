@@ -39,7 +39,7 @@ public class ValidadorParametosLlamada {
     }
 
     public void parametroPar(String lexema) {
-        System.out.println("parametroPar");
+        //System.out.println("parametroPar");
         numero_lineas.remove(0);
         if (lexema.equals("PAR1")) {
             cinta.remove(0);
@@ -49,18 +49,18 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado: boolean");
-                System.out.println("parametroPar");
+                //System.out.println("parametroPar");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: '('");
-            System.out.println("parametroPar");
+            //System.out.println("parametroPar");
         }
     }
 
     public void parametro1(String lexema) {
-        System.out.println("parametro1");
+        //System.out.println("parametro1");        
         numero_lineas.remove(0);
         if (lexema.equals("VALORBOOL") || lexema.equals("VALORNUM") || lexema.equals("CHARACT") || lexema.equals("VALORTEXTO")) {
             cinta.remove(0);
@@ -70,7 +70,7 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: '}'");
-                System.out.println("parametro1");
+                //System.out.println("parametro1");
             }
         } else if (lexema.equals("VARIABLE")) {
             cinta.remove(0);
@@ -80,7 +80,7 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
-                System.out.println("parametro1");
+                //System.out.println("parametro1");
             }
         } else if (lexema.equals("NEGADOR")) {
             cinta.remove(0);
@@ -90,7 +90,7 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado: boolean");
-                System.out.println("parametro1");
+                //System.out.println("parametro1");
             }
         } else if (lexema.equals("PAR2")) {
             cinta.remove(0);
@@ -100,18 +100,18 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
-                System.out.println("parametro1");
+                //System.out.println("parametro1");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
-            System.out.println("parametro1");
+            //System.out.println("parametro1");
         }
     }
     
     public void parametro2(String lexema) {
-        System.out.println("parametro2");
+        //System.out.println("parametro2");
         numero_lineas.remove(0);
         if (lexema.equals("OPLOGICO") || lexema.equals("COMA") || lexema.equals("MAS") || lexema.equals("AND") || lexema.equals("EQUALS")) {
             cinta.remove(0);
@@ -121,7 +121,7 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado despues de " + lexema);
-                System.out.println("parametro2");
+                //System.out.println("parametro2");
             }
         } else if (lexema.equals("PAR2")) {
             cinta.remove(0);
@@ -131,34 +131,36 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
-                System.out.println("parametro2");
+                //System.out.println("parametro2");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
-            System.out.println("parametro2");
+            //System.out.println("parametro2");
         }
     }
     
     public void parametro3(String lexema) {
-        System.out.println("parametro3");
+        //System.out.println("parametro3");
         numero_lineas.remove(0);
-        if (lexema.equals(";")) {
+        if (lexema.equals("ENDLINE")) {
             cinta.remove(0);
-            numero_lineas.remove(0);//PAra Pruebadhvfjahsd
-            System.out.println("Parametros Bien");
+            //System.out.println("Parametros Bien");
+        } else if (lexema.equals("KEY1")) {
+            cinta.remove(0);
+            //System.out.println("Parametros Bien");
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ';'");
-            System.out.println("parametro3");
+            //System.out.println("parametro3");
         }
     }
     
     public void parametro4(String lexema) {
-        System.out.println("parametro4");
-        numero_lineas.remove(0);
+        //System.out.println("parametro4");        
+        numero_lineas.remove(0);        
         if (lexema.equals("VALORBOOL") || lexema.equals("VALORNUM") || lexema.equals("CHARACT") || lexema.equals("VALORTEXTO")) {
             cinta.remove(0);
             try {
@@ -167,28 +169,28 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         } else if (lexema.equals("VARIABLE")) {
             cinta.remove(0);
             try {
-                parametro3(cinta.get(0));
+                parametro5(cinta.get(0));
             } catch (Exception e) {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Valor esperado");
-            System.out.println("parametro4");
+            //System.out.println("parametro4");
         }
     }
     
     public void parametro5(String lexema) {
-        System.out.println("parametro5");
+        //System.out.println("parametro5");        
         numero_lineas.remove(0);
         if (lexema.equals("OPLOGICO") || lexema.equals("COMA") || lexema.equals("MAS") || lexema.equals("AND") || lexema.equals("EQUALS")) {
             cinta.remove(0);
@@ -198,7 +200,7 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado despues ");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         } else if (lexema.equals("PAR2")) {
             cinta.remove(0);
@@ -208,7 +210,7 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         }else if (lexema.equals("COR1")) {
             cinta.remove(0);
@@ -218,18 +220,18 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
-            System.out.println("parametro4");
+            //System.out.println("parametro4");
         }
     }
     
     public void parametro6(String lexema) {
-        System.out.println("parametro5");
+        //sSystem.out.println("parametro5");
         numero_lineas.remove(0);
         if (lexema.equals("VALORNUM") || lexema.equals("VARIABLE")) {
             cinta.remove(0);
@@ -239,18 +241,18 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ']'");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
-            System.out.println("parametro6");
+            //System.out.println("parametro6");
         }
     }
     
     public void parametro7(String lexema) {
-        System.out.println("parametro5");
+        //System.out.println("parametro5");
         numero_lineas.remove(0);
         if (lexema.equals("COR1")) {
             cinta.remove(0);
@@ -260,13 +262,13 @@ public class ValidadorParametosLlamada {
                 error = true;
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
-                System.out.println("parametro4");
+                //System.out.println("parametro4");
             }
         } else {
             error = true;
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
-            System.out.println("parametro6");
+            //System.out.println("parametro6");
         }
     }
 }
