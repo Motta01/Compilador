@@ -16,10 +16,15 @@ public class AutomataCondicional {
     ArrayList<String> cinta;
     ArrayList<Integer> numero_lineas;
     boolean error = false;
+    String info_error = "";
     
     public AutomataCondicional(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
         this.cinta = cinta;
         this.numero_lineas = numero_lineas;
+    }
+    
+    public String getInfo_error() {
+        return info_error;
     }
     
     public ArrayList<String> getCinta() {
@@ -47,12 +52,14 @@ public class AutomataCondicional {
                 condicion1(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado: boolean");
                 System.out.println("condicionPar");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: '('");
             System.out.println("condicionPar");
@@ -69,6 +76,7 @@ public class AutomataCondicional {
                 condicion2(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 System.out.println("condicion1");
@@ -79,6 +87,7 @@ public class AutomataCondicional {
                 condicion6(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 System.out.println("condicion1");
@@ -89,12 +98,14 @@ public class AutomataCondicional {
                 condicion3(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado: boolean");
                 System.out.println("condicion1");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Valor esperado: boolean");
             System.out.println("condicion1");
@@ -111,6 +122,7 @@ public class AutomataCondicional {
                 System.out.println("Condicional Bien");
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 System.out.println("condicion2");
@@ -121,12 +133,14 @@ public class AutomataCondicional {
                 condicion4(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado");
                 System.out.println("condicion2");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             System.out.println("condicion2");
@@ -142,12 +156,14 @@ public class AutomataCondicional {
                 condicion6(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 System.out.println("condicion3");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Valor esperado: boolean");
             System.out.println("condicion3");
@@ -163,12 +179,14 @@ public class AutomataCondicional {
                 condicion5(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 System.out.println("condicion4");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Valor esperado");
             System.out.println("condicion4");
@@ -185,6 +203,7 @@ public class AutomataCondicional {
                 System.out.println("Condicional Bien");
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 System.out.println("condicion5");
@@ -195,12 +214,14 @@ public class AutomataCondicional {
                 condicion1(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado");
                 System.out.println("condicion5");
             }
         }else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             System.out.println("condicion5");
@@ -216,6 +237,7 @@ public class AutomataCondicional {
                 condicion1(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 System.out.println("condicion6");
@@ -227,12 +249,14 @@ public class AutomataCondicional {
                 System.out.println("Condicional Bien");
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 System.out.println("condicion6");
             }
         }else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Valor esperado: boolean");
             System.out.println("condicion6");

@@ -16,13 +16,17 @@ public class DeclaracionVariablesNumericas {
     private ArrayList<String> cinta;
     private ArrayList<Integer> numero_lineas;
     private boolean estado = true;
+    String info_error = "";
 
     public DeclaracionVariablesNumericas(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
         this.cinta = cinta;
         this.numero_lineas = numero_lineas;
         principalDV(cinta.get(0));
     }
-    
+
+    public String getInfo_error() {
+        return info_error;
+    }
 
     public ArrayList<String> getCinta() {
         return cinta;
@@ -31,7 +35,7 @@ public class DeclaracionVariablesNumericas {
     public ArrayList<Integer> getNumero_lineas() {
         return numero_lineas;
     }
-    
+
     public boolean isEstado() {
         return estado;
     }
@@ -43,7 +47,8 @@ public class DeclaracionVariablesNumericas {
             estadoDV1(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error 4004(DEclaracion invalida)-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error 4004(DEclaracion invalida)-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -54,13 +59,14 @@ public class DeclaracionVariablesNumericas {
             estadoDV2(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error de sintaxis DV1-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sintaxis DV1-line:  " + numero_lineas.get(0));
         }
 
     }
 
     void estadoDV2(String lexema) {
-numero_lineas.remove(0);
+        numero_lineas.remove(0);
         if (lexema.equals("ENDLINE")) {
             cinta.remove(0);
             estadoDV9();
@@ -75,7 +81,8 @@ numero_lineas.remove(0);
             estadoDV10(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error al declarar la variable DV2-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error al declarar la variable DV2-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -86,12 +93,13 @@ numero_lineas.remove(0);
             estadoDV8(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("error se sistaxis DV7-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("error se sistaxis DV7-line:  " + numero_lineas.get(0));
         }
     }
 
     void estadoDV8(String lexema) {
-numero_lineas.remove(0);
+        numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("COMA")) {
             cinta.remove(0);
             estadoDV7(cinta.get(0));
@@ -100,18 +108,20 @@ numero_lineas.remove(0);
             estadoDV9();
         } else {
             estado = false;
-            System.err.println("error de sintaxis DV8-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("error de sintaxis DV8-line:  " + numero_lineas.get(0));
         }
     }
 
     void estadoDV3(String lexema) {
-numero_lineas.remove(0);    
+        numero_lineas.remove(0);
         if (lexema.equals("VALORNUM") || lexema.equals("FUNCION") || lexema.equals("VARIABLE")) {
             cinta.remove(0);
             estadoDV6(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error al declarar la variable DV3-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error al declarar la variable DV3-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -120,12 +130,13 @@ numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("ENDLINE")) {
             cinta.remove(0);
             estadoDV9();
-        } else if (lexema.equals("ARITMETICO")||lexema.equals("MAS")) {
+        } else if (lexema.equals("ARITMETICO") || lexema.equals("MAS")) {
             cinta.remove(0);
             estadoDV3(cinta.remove(0));
         } else {
             estado = false;
-            System.err.println("Error de sintaxis DV6-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sintaxis DV6-line:  " + numero_lineas.get(0));
         }
 
     }
@@ -137,7 +148,8 @@ numero_lineas.remove(0);
             estadoDV5(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("error de sintaxis DV4-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("error de sintaxis DV4-line:  " + numero_lineas.get(0));
         }
 
     }
@@ -152,7 +164,8 @@ numero_lineas.remove(0);
             estadoDV6(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error de sintaxis DV5-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sintaxis DV5-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -175,7 +188,8 @@ numero_lineas.remove(0);
             estadoDV11(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error de DV10-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de DV10-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -186,7 +200,8 @@ numero_lineas.remove(0);
             estadoDV12(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Eror de sitaxis DV11-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Eror de sitaxis DV11-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -203,7 +218,8 @@ numero_lineas.remove(0);
             estadoDV9();
         } else {
             estado = false;
-            System.err.println("Eror de sitaxis DV12-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Eror de sitaxis DV12-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -217,7 +233,8 @@ numero_lineas.remove(0);
             estadoDV6(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error de sitaxis DV13-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sitaxis DV13-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -228,18 +245,20 @@ numero_lineas.remove(0);
             estadoDV6(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error de sitaxis DV14-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sitaxis DV14-line:  " + numero_lineas.get(0));
         }
     }
 
     void estadoDV15(String lexema) {
         numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("KEY1")) {
-            cinta.remove(0);         
+            cinta.remove(0);
             estadoDV4(cinta.get(0));
         } else {
             estado = false;
-            System.err.println("Error de sitaxis DV15-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sitaxis DV15-line:  " + numero_lineas.get(0));
         }
     }
 
@@ -250,7 +269,8 @@ numero_lineas.remove(0);
             estadoDV9();
         } else {
             estado = false;
-            System.err.println("Error de sitaxis DV16-line:  "+ numero_lineas.get(0));
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            System.err.println("Error de sitaxis DV16-line:  " + numero_lineas.get(0));
         }
     }
 }

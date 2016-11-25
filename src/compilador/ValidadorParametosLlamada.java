@@ -16,12 +16,18 @@ public class ValidadorParametosLlamada {
     ArrayList<String> cinta;
     ArrayList<Integer> numero_lineas;
     boolean error = false;
+    String info_error = "";
+    
 
     public ValidadorParametosLlamada(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
         this.cinta = cinta;
         this.numero_lineas = numero_lineas;
     }
 
+    public String getInfo_error() {
+        return info_error;
+    }
+    
     public ArrayList<String> getCinta() {
         return cinta;
     }
@@ -47,12 +53,13 @@ public class ValidadorParametosLlamada {
                 parametro1(cinta.get(0));
             } catch (Exception e) {
                 error = true;
-                System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Valor esperado: boolean");
                 //System.out.println("parametroPar");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: '('");
             //System.out.println("parametroPar");
@@ -68,6 +75,7 @@ public class ValidadorParametosLlamada {
                 parametro2(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: '}'");
                 //System.out.println("parametro1");
@@ -78,6 +86,7 @@ public class ValidadorParametosLlamada {
                 parametro5(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 //System.out.println("parametro1");
@@ -88,6 +97,7 @@ public class ValidadorParametosLlamada {
                 //parametro1(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado: boolean");
                 //System.out.println("parametro1");
@@ -98,12 +108,14 @@ public class ValidadorParametosLlamada {
                 parametro3(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 //System.out.println("parametro1");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             //System.out.println("parametro1");
@@ -119,6 +131,7 @@ public class ValidadorParametosLlamada {
                 parametro4(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado despues de " + lexema);
                 //System.out.println("parametro2");
@@ -129,12 +142,14 @@ public class ValidadorParametosLlamada {
                 parametro3(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 //System.out.println("parametro2");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             //System.out.println("parametro2");
@@ -146,15 +161,15 @@ public class ValidadorParametosLlamada {
         numero_lineas.remove(0);
         if (lexema.equals("ENDLINE")) {
             cinta.remove(0);
-            //System.out.println("Parametros Bien");
+            System.out.println("Parametros Bien");
         } else if (lexema.equals("KEY1")) {
             cinta.remove(0);
-            //System.out.println("Parametros Bien");
+            System.out.println("Parametros Bien");
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ';'");
-            //System.out.println("parametro3");
         }
     }
     
@@ -167,6 +182,7 @@ public class ValidadorParametosLlamada {
                 parametro2(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 //System.out.println("parametro4");
@@ -177,12 +193,14 @@ public class ValidadorParametosLlamada {
                 parametro5(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 //System.out.println("parametro4");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Valor esperado");
             //System.out.println("parametro4");
@@ -198,6 +216,7 @@ public class ValidadorParametosLlamada {
                 parametro4(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Valor esperado despues ");
                 //System.out.println("parametro4");
@@ -208,6 +227,7 @@ public class ValidadorParametosLlamada {
                 parametro3(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 //System.out.println("parametro4");
@@ -218,12 +238,14 @@ public class ValidadorParametosLlamada {
                 parametro6(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ';'");
                 //System.out.println("parametro4");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             //System.out.println("parametro4");
@@ -239,12 +261,14 @@ public class ValidadorParametosLlamada {
                 parametro7(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ']'");
                 //System.out.println("parametro4");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             //System.out.println("parametro6");
@@ -260,12 +284,14 @@ public class ValidadorParametosLlamada {
                 parametro5(cinta.get(0));
             } catch (Exception e) {
                 error = true;
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
                 System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
                 System.out.println("Token esperado: ')'");
                 //System.out.println("parametro4");
             }
         } else {
             error = true;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
             System.out.println("Token esperado: ')'");
             //System.out.println("parametro6");

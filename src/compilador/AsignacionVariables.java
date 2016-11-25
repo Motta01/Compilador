@@ -16,11 +16,16 @@ public class AsignacionVariables {
     private ArrayList<String> cinta;
     private ArrayList<Integer> numero_lineas;
     private boolean estado = true;
+    String info_error = "";
 
     public AsignacionVariables(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
         this.cinta = cinta;
         this.numero_lineas = numero_lineas;
         estadoAV2(this.cinta.get(0));
+    }
+
+    public String getInfo_error() {
+        return info_error;
     }
     
     public ArrayList<String> getCinta() {
@@ -45,6 +50,7 @@ public class AsignacionVariables {
             estadoAV4(cinta.get(0));
         } else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV2-line:  "+ numero_lineas.get(0));
         }
     }
@@ -58,6 +64,7 @@ public class AsignacionVariables {
             estadoAV7(cinta.get(0));
         }else{
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("error de sitaxis AV3-line:  "+ numero_lineas.get(0));
         }
     }
@@ -68,6 +75,7 @@ public class AsignacionVariables {
             estadoAV5(cinta.get(0));
         } else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("error de sitaxis AV4-line:  "+ numero_lineas.get(0));
         }
 
@@ -78,6 +86,7 @@ public class AsignacionVariables {
             estadoAV2(cinta.get(0));
         } else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV5-line:  "+ numero_lineas.get(0));
         }
     }
@@ -92,6 +101,7 @@ public class AsignacionVariables {
             estadoAV8();
         }else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV6-line:  "+ numero_lineas.get(0));
         }
     }
@@ -105,6 +115,7 @@ public class AsignacionVariables {
             estadoAV11(cinta.get(0));
         } else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV7-line:  "+ numero_lineas.get(0));
         }
     }
@@ -124,6 +135,7 @@ public class AsignacionVariables {
             estadoAV10(cinta.get(0));
         } else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV9-line:  "+ numero_lineas.get(0));
         }
     }
@@ -139,6 +151,7 @@ public class AsignacionVariables {
             estadoAV3(cinta.get(0));
         }else{
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV10-line:  "+ numero_lineas.get(0));
         }
     }
@@ -150,6 +163,7 @@ public class AsignacionVariables {
             estadoAV9(cinta.get(0));
         } else {
             estado=false;
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
             System.err.println("erorr de sintaxis AV11-line:  "+ numero_lineas.get(0));
         }
     }

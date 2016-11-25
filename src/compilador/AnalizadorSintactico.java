@@ -13,46 +13,69 @@ import java.util.ArrayList;
  */
 public class AnalizadorSintactico {
 
-    private ArrayList<String> cinta;
-    private ArrayList<Integer> numero_lineas;
+    ArrayList<String> cinta;
+    ArrayList<Integer> numero_lineas;
+    String info_error = "";
+    String info_solucion = "";
+    boolean compilado = false;
 
-    public AnalizadorSintactico() {
-        this.cinta = new ArrayList<>();
-        this.cinta.add("START");//inicio
-        this.cinta.add("KEY1");
+    public AnalizadorSintactico(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
 
-        this.cinta.add("VARIABLE");
-        this.cinta.add("PAR1");
-//        this.cinta.add("LOGICO");
-        this.cinta.add("VARIABLE");
-        this.cinta.add("COMA");
-        this.cinta.add("VARIABLE");
-        this.cinta.add("MAS");
-        this.cinta.add("VARIABLE");
-        this.cinta.add("PAR2");
-        this.cinta.add("ENDLINE");
-
-        this.cinta.add("KEY2");
-        this.cinta.add("END");
-
-        this.numero_lineas = new ArrayList<>();
-        this.numero_lineas.add(1);
-        this.numero_lineas.add(1);
-
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-
-        this.numero_lineas.add(3);
-        this.numero_lineas.add(3);
+        this.cinta = cinta;
+        this.numero_lineas = numero_lineas;
+//        this.cinta = new ArrayList<>();
+//        this.cinta.add("START");//inicio
+//        this.cinta.add("KEY1");
+//
+//        this.cinta.add("PARA");
+//        this.cinta.add("PAR1");
+//        this.cinta.add("ENDLINE");
+//        this.cinta.add("ENDLINE");
+////        this.cinta.add("COMA");
+////        this.cinta.add("VARIABLE");
+////        this.cinta.add("MAS");
+////        this.cinta.add("VARIABLE");
+//        this.cinta.add("PAR2");
+//        this.cinta.add("ENDLINE");
+//
+//        this.cinta.add("KEY2");
+//        this.cinta.add("END");
+//
+//        this.numero_lineas = new ArrayList<>();
+//        this.numero_lineas.add(1);
+//        this.numero_lineas.add(1);
+//
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//        this.numero_lineas.add(2);
+//
+//        this.numero_lineas.add(3);
+//        this.numero_lineas.add(3);
     }
 
+    public ArrayList<String> getCinta() {
+        return cinta;
+    }
+
+    public ArrayList<Integer> getNumero_lineas() {
+        return numero_lineas;
+    }
+
+    public String getInfo_error() {
+        return info_error;
+    }
+
+    public boolean isCompilado() {
+        return compilado;
+    }
+    
+    
     public void analizar() {
         if (contarLlaves()) {
             if (contarParentesis()) {
@@ -68,14 +91,12 @@ public class AnalizadorSintactico {
             try {
                 p1(this.cinta.get(0));
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-                System.out.println("Token esperado: '{'");
-                System.out.println("p1");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+                this.info_solucion = "Token esperado: '{'";
             }
         } else {
-            System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-            System.out.println("Token esperado: 'inicio'");
-            System.out.println("inicio");
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            this.info_solucion = "Token esperado: 'inicio'";
         }
     }
 
@@ -87,14 +108,12 @@ public class AnalizadorSintactico {
             try {
                 p2(this.cinta.get(0));
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-                System.out.println("Token esperado: '}'");
-                System.out.println("p3");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+                this.info_solucion = "Token esperado: '}'";
             }
         } else {
-            System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-            System.out.println("Token esperado: '{'");
-            System.out.println("p1");
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            this.info_solucion = "Token esperado: '{'";
         }
     }
 
@@ -113,36 +132,52 @@ public class AnalizadorSintactico {
                 }
 
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-                System.out.println("Token esperado: '('");
-                System.out.println("condicionPar");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+                this.info_solucion = "Token esperado: '('";
+            }
+        }
+        if (lexema.equals("PARA")) {
+            this.cinta.remove(0);
+            try {
+                PrametrosPara validador_para = new PrametrosPara(this.cinta, this.numero_lineas);
+                validador_para.analizar();
+                this.cinta = validador_para.getCinta();
+                this.numero_lineas = validador_para.getNumero_lineas();
+                if (!validador_para.getError()) {
+                    p3(this.cinta.get(0));
+                }
+
+            } catch (Exception e) {
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+                this.info_solucion = "Token esperado: '('";
+
             }
         } else if (lexema.equals("NUMTYPE")) {
             DeclaracionVariablesNumericas num = new DeclaracionVariablesNumericas(cinta, numero_lineas);
             this.cinta = num.getCinta();
-            this.numero_lineas=num.getNumero_lineas();
+            this.numero_lineas = num.getNumero_lineas();
             if (num.isEstado()) {
                 p2(this.cinta.get(0));
             }
         } else if (lexema.equals("STRING")) {
             DeclaracionVariableString cad = new DeclaracionVariableString(cinta, numero_lineas);
             this.cinta = cad.getCinta();
-            this.numero_lineas= cad.getNumero_lineas();
+            this.numero_lineas = cad.getNumero_lineas();
             if (cad.isEstado()) {
                 p2(this.cinta.get(0));
             }
         } else if (lexema.equals("BOOLEAN")) {
             DeclaracionVariablesBoolean tboolean = new DeclaracionVariablesBoolean(cinta, numero_lineas);
             this.cinta = tboolean.getCinta();
-            this.numero_lineas= tboolean.getNumero_lineas();
+            this.numero_lineas = tboolean.getNumero_lineas();
             if (tboolean.isEstado()) {
                 p2(this.cinta.get(0));
             }
         } else if (lexema.equals("CHAR")) {
             DeclaracionVariablesChar charcito = new DeclaracionVariablesChar(cinta, numero_lineas);
             this.cinta = charcito.getCinta();
-            this.numero_lineas=charcito.getNumero_lineas();
-            
+            this.numero_lineas = charcito.getNumero_lineas();
+
             if (charcito.isEstado()) {
                 p2(this.cinta.get(0));
             }
@@ -151,9 +186,8 @@ public class AnalizadorSintactico {
             try {
                 variable(this.cinta.get(0));
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-                System.out.println("Token esperado: ';'");
-                System.out.println("variable");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+                this.info_solucion = "Token esperado: ';'";
             }
 
         } else if (lexema.equals("KEY2")) {
@@ -165,23 +199,20 @@ public class AnalizadorSintactico {
                     p2(this.cinta.get(0));
                 }
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-                System.out.println("Palabra esperada: 'fin'");
-                System.out.println("fin");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+//                System.out.println("Palabra esperada: 'fin'");
             }
         } else if (lexema.equals("KEY1")) {
             this.cinta.remove(0);
             try {
                 p2(this.cinta.get(0));
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + numero_lineas.get(0));
-                System.out.println("Token esperado: ')'");
-                System.out.println("p2");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+//                System.out.println("Token esperado: ')'");
             }
         } else {
-            System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-            System.out.println("Token esperado: '}'");
-            System.out.println("p2");
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            //System.out.println("Token esperado: '}'");
         }
     }
 
@@ -189,11 +220,10 @@ public class AnalizadorSintactico {
         System.out.println("fin");
         this.numero_lineas.remove(0);
         if (lexema.equalsIgnoreCase("END")) {
-            System.out.println("Analisis de sintaxis exitosa");
+            this.compilado = true;
         } else {
-            System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-            System.out.println("Token esperado: 'fin'");
-            System.out.println("fin");
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            //System.out.println("Token esperado: 'fin'");
         }
     }
 
@@ -208,9 +238,8 @@ public class AnalizadorSintactico {
             //cinta.remove(0);
             p1(this.cinta.get(0));
         } else {
-            System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-            System.out.println("Token esperado: ';'");
-            System.out.println("p3");
+            this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+            //System.out.println("Token esperado: ';'");
         }
     }
 
@@ -229,14 +258,13 @@ public class AnalizadorSintactico {
                     p2(this.cinta.get(0));
                 }
             } catch (Exception e) {
-                System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-                System.out.println("Token esperado: '('");
-                System.out.println("parametroPar");
+                this.info_error = "Error sintáctico en la linea " + this.numero_lineas.get(0);
+                //System.out.println("Token esperado: '('");
             }
         } else {
-           AsignacionVariables asignador = new AsignacionVariables(cinta, numero_lineas);
-           cinta=asignador.getCinta();
-           numero_lineas=asignador.getNumero_lineas();
+            AsignacionVariables asignador = new AsignacionVariables(cinta, numero_lineas);
+            cinta = asignador.getCinta();
+            numero_lineas = asignador.getNumero_lineas();
         }
     }
 
@@ -254,18 +282,16 @@ public class AnalizadorSintactico {
             }
             if (cont < 0) {
                 linea_error = this.numero_lineas.get(i);
-                System.out.println("Error sintáctico en la linea " + linea_error);
-                System.out.println("Token esperado: 'fin'");
-                System.out.println("contarLlaves");
+                this.info_error = "Corrija las llaves. Error sintáctico en la linea " + this.numero_lineas.get(0);
+                //System.out.println("Token esperado: 'fin'");
                 return false;
             }
         }
 
         if (cont > 0) {
             linea_error = this.numero_lineas.get(this.numero_lineas.size() - 1);
-            System.out.println("Error sintáctico en la linea " + linea_error);
-            System.out.println("Token esperado: '}'");
-            System.out.println("contarLlaves");
+            this.info_error = "Corrija las llaves. Error sintáctico en la linea " + this.numero_lineas.get(0);
+            //System.out.println("Token esperado: '}'");
             return false;
         }
 
@@ -286,18 +312,16 @@ public class AnalizadorSintactico {
             }
             if (cont < 0) {
                 linea_error = this.numero_lineas.get(i);
-                System.out.println("Error sintáctico en la linea " + linea_error);
-                System.out.println("Token Inválido: ')'");
-                System.out.println("contarPArentesis");
+                this.info_error = "Corrija los parentesis. Error sintáctico en la linea " + this.numero_lineas.get(0);
+                //System.out.println("Token Inválido: ')'");
                 return false;
             }
         }
 
         if (cont > 0) {
             linea_error = this.numero_lineas.get(this.numero_lineas.size() - 1);
-            System.out.println("Error sintáctico en la linea " + linea_error);
-            System.out.println("Token esperado: ')'");
-            System.out.println("contarParentesis");
+            this.info_error = "Corrija los parentesis. Error sintáctico en la linea " + this.numero_lineas.get(0);
+//            System.out.println("Token esperado: ')'");
             return false;
         }
 
