@@ -21,14 +21,26 @@ public class AnalizadorSintactico {
         this.cinta.add("START");//inicio
         this.cinta.add("KEY1");
 
-        this.cinta.add("VARIABLE");
+        this.cinta.add("KEY1");
+        this.cinta.add("KEY2");
+
+        this.cinta.add("IF");
         this.cinta.add("PAR1");
-//        this.cinta.add("LOGICO");
         this.cinta.add("VARIABLE");
-        this.cinta.add("COMA");
+        this.cinta.add("OPLOGICO");
         this.cinta.add("VARIABLE");
-        this.cinta.add("MAS");
+        this.cinta.add("AND");
+        this.cinta.add("VALORBOOL");
+        this.cinta.add("PAR2");
+        this.cinta.add("ENDLINE");
+
+        this.cinta.add("IF");
+        this.cinta.add("PAR1");
         this.cinta.add("VARIABLE");
+//        this.cinta.add("OPLOGICO");
+        //this.cinta.add("IF");
+        this.cinta.add("AND");
+        this.cinta.add("VALORBOOL");
         this.cinta.add("PAR2");
         this.cinta.add("ENDLINE");
 
@@ -41,16 +53,29 @@ public class AnalizadorSintactico {
 
         this.numero_lineas.add(2);
         this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
-        this.numero_lineas.add(2);
 
         this.numero_lineas.add(3);
         this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+        this.numero_lineas.add(3);
+
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+        this.numero_lineas.add(4);
+
+        this.numero_lineas.add(5);
+        this.numero_lineas.add(5);
     }
 
     public void analizar() {

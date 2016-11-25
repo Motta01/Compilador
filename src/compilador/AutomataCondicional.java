@@ -102,7 +102,7 @@ public class AutomataCondicional {
     }
 
     private void condicion2(String lexema) {
-        System.out.println("condicion2");
+        System.out.println("condicion2");        
         numero_lineas.remove(0);
         if (lexema.equals("PAR2")) {
             cinta.remove(0);
@@ -115,7 +115,7 @@ public class AutomataCondicional {
                 System.out.println("Token esperado: ';'");
                 System.out.println("condicion2");
             }
-        } else if (lexema.equals("OPLOGICO")) {
+        } else if (lexema.equals("OPLOGICO") || lexema.equals("OR")||lexema.equals("AND")||lexema.equals("EQUALS")) {
             cinta.remove(0);
             try {
                 condicion4(cinta.get(0));
@@ -134,7 +134,7 @@ public class AutomataCondicional {
     }
 
     private void condicion3(String lexema) {
-        System.out.println("condicion3");
+        System.out.println("condicion3");        
         numero_lineas.remove(0);
         if (lexema.equals("VARIABLE") || lexema.equals("VALORBOOL") || lexema.equals("FUNCION")) {
             cinta.remove(0);
@@ -157,7 +157,7 @@ public class AutomataCondicional {
     public void condicion4(String lexema) {
         System.out.println("condicion4");
         numero_lineas.remove(0);
-        if (lexema.equals("VARIABLE") || lexema.equals("VALORNUM")) {
+        if (lexema.equals("VARIABLE") || lexema.equals("VALORNUM") || lexema.equals("VALORBOOL")) {
             cinta.remove(0);
             try {
                 condicion5(cinta.get(0));
