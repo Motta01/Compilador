@@ -143,26 +143,31 @@ public class AnalizadorSintactico {
                 System.out.println("condicionPar");
             }
         } else if (lexema.equals("NUMTYPE")) {
-            DeclaracionVariablesNumericas num = new DeclaracionVariablesNumericas(this.cinta);
+            DeclaracionVariablesNumericas num = new DeclaracionVariablesNumericas(cinta, numero_lineas);
             this.cinta = num.getCinta();
+            this.numero_lineas=num.getNumero_lineas();
             if (num.isEstado()) {
                 p2(this.cinta.get(0));
             }
         } else if (lexema.equals("STRING")) {
-            DeclaracionVariableString cad = new DeclaracionVariableString(this.cinta);
+            DeclaracionVariableString cad = new DeclaracionVariableString(cinta, numero_lineas);
             this.cinta = cad.getCinta();
+            this.numero_lineas= cad.getNumero_lineas();
             if (cad.isEstado()) {
                 p2(this.cinta.get(0));
             }
         } else if (lexema.equals("BOOLEAN")) {
-            DeclaracionVariablesBoolean tboolean = new DeclaracionVariablesBoolean(this.cinta);
+            DeclaracionVariablesBoolean tboolean = new DeclaracionVariablesBoolean(cinta, numero_lineas);
             this.cinta = tboolean.getCinta();
+            this.numero_lineas= tboolean.getNumero_lineas();
             if (tboolean.isEstado()) {
                 p2(this.cinta.get(0));
             }
         } else if (lexema.equals("CHAR")) {
-            DeclaracionVariablesChar charcito = new DeclaracionVariablesChar(this.cinta);
+            DeclaracionVariablesChar charcito = new DeclaracionVariablesChar(cinta, numero_lineas);
             this.cinta = charcito.getCinta();
+            this.numero_lineas=charcito.getNumero_lineas();
+            
             if (charcito.isEstado()) {
                 p2(this.cinta.get(0));
             }
@@ -254,9 +259,9 @@ public class AnalizadorSintactico {
                 System.out.println("parametroPar");
             }
         } else {
-            System.out.println("Error sintáctico en la linea " + this.numero_lineas.get(0));
-            System.out.println("Token esperado: ';'");
-            System.out.println("variable");
+           AsignacionVariables asignador = new AsignacionVariables(cinta, numero_lineas);
+           cinta=asignador.getCinta();
+           numero_lineas=asignador.getNumero_lineas();
         }
     }
 

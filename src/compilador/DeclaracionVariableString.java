@@ -13,42 +13,49 @@ import java.util.ArrayList;
  */
 public class DeclaracionVariableString {
     private ArrayList<String>cinta;
+    private ArrayList<Integer> numero_lineas;
     private boolean estado = true;
 
-    public DeclaracionVariableString(ArrayList<String> cinta) {
+    public DeclaracionVariableString(ArrayList<String> cinta, ArrayList<Integer> numero_lineas) {
         this.cinta = cinta;
+        this.numero_lineas = numero_lineas;
         principalDVS(cinta.get(0));
     }
-
+    
     public ArrayList<String> getCinta() {
         return cinta;
     }
 
+    public ArrayList<Integer> getNumero_lineas() {
+        return numero_lineas;
+    }
+    
     public boolean isEstado() {
         return estado;
     }
     
-     void principalDVS (String lexema){
+     void principalDVS (String lexema){numero_lineas.remove(0);
 	if(lexema.equals("STRING")){
+            
             cinta.remove(0);
             estadoDVS1(cinta.get(0));
 	}else{
             estado=false;
-             System.err.println("Error 4004S");
+             System.err.println("Error 4004(Declaracion invalida) linea: "+ numero_lineas.get(0));
 	}
     }
-    void estadoDVS1(String lexema){
+    void estadoDVS1(String lexema){numero_lineas.remove(0);
 	if(lexema.equals("VARIABLE")){
 		cinta.remove(0);
 		estadoDVS2(cinta.get(0));
 	}else{
             estado=false;
-		System.err.println("Error de sintaxis DVS1");
+		System.err.println("Error de sintaxis DVS1. line:  "+ numero_lineas.get(0));
 	}
 
     }
     void estadoDVS2(String lexema){
-	
+	numero_lineas.remove(0);
 	if(lexema.equals("ENDLINE")){
             cinta.remove(0);
             estadoDVS9();
@@ -63,22 +70,24 @@ public class DeclaracionVariableString {
             estadoDVS10(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Error al declarar la variable DVS2");
+            System.err.println("Error al declarar la variable DVS2. linea: "+ numero_lineas.get(0));
+            
 	}
     }
 
     void estadoDVS3(String lexema){
-     
+     numero_lineas.remove(0);
             if(lexema.equals("VALORTEXTO")||lexema.equals("FUNCION")||lexema.equals("VARIABLE")){
                     cinta.remove(0);
                     estadoDVS6(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Error de sitaxis faltan comillas DVS3");
+            System.err.println("Error de sitaxis faltan comillas DVS3 -line:  "+ numero_lineas.get(0));
         }
     }
     
     void estadoDVS6(String lexema){
+        numero_lineas.remove(0);
 	if(lexema.equalsIgnoreCase("ENDLINE")){
             cinta.remove(0);
             estadoDVS9();
@@ -87,22 +96,23 @@ public class DeclaracionVariableString {
             estadoDVS3(cinta.remove(0));
         }else{
             estado=false;
-            System.err.println("Error de sintaxis DVS6");
+            System.err.println("Error de sintaxis DVS6 -line:  "+ numero_lineas.get(0));
 	}
 	
     }
     void estadoDVS7(String lexema){
+        numero_lineas.remove(0);
 	if(lexema.equals("VARIABLE")){
 			cinta.remove(0);
 			estadoDVS8(cinta.get(0));
 	}else{
                         estado=false;
-			System.err.println("error se sistaxis DVS7");
+			System.err.println("error se sistaxis DVS7 -line:  "+ numero_lineas.get(0));
 	}
     }
 
     void estadoDVS8(String lexema){
-      
+      numero_lineas.remove(0);
 	if(lexema.equalsIgnoreCase("COMA")){
             cinta.remove(0);
             estadoDVS7(cinta.get(0));
@@ -111,22 +121,22 @@ public class DeclaracionVariableString {
             estadoDVS9();
 	}else{
                         estado=false;
-            		System.err.println("error de sintaxis DVS8");
+            		System.err.println("error de sintaxis DVS8 -line:  "+ numero_lineas.get(0));
 	}
     }
 
     void estadoDVS4(String lexema){
-	
+	numero_lineas.remove(0);
             if(lexema.equals("VARIABLE")||lexema.equals("FUNCION")||lexema.equals("VALORTEXTO")){
                         cinta.remove(0);
                         estadoDVS5(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Error de sitaxis faltan comillas DVS4");
+            System.err.println("Error de sitaxis faltan comillas DVS4 -line:  "+ numero_lineas.get(0));
         }
     }
     void estadoDVS5(String lexema){
-	
+	numero_lineas.remove(0);
 	if(lexema.equalsIgnoreCase("COMA")){
             cinta.remove(0);
             estadoDVS4(cinta.get(0));
@@ -135,7 +145,7 @@ public class DeclaracionVariableString {
             estadoDVS6(cinta.get(0));
 	}else{
         estado=false;
-	System.err.println("Error de sintaxis DVS5");
+	System.err.println("Error de sintaxis DVS5-line:  "+ numero_lineas.get(0));
 	}
     }
 
@@ -148,7 +158,7 @@ public class DeclaracionVariableString {
         System.out.println("Declaracion exitosa");
         
     }
-    void estadoDVS10(String lexema){
+    void estadoDVS10(String lexema){numero_lineas.remove(0);
         if(lexema.equalsIgnoreCase("COR2")){
             cinta.remove(0);
             estadoDVS12(cinta.get(0));
@@ -157,19 +167,21 @@ public class DeclaracionVariableString {
             estadoDVS11(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Error de DVS10 ");
+            System.err.println("Error de DVS10-line:  "+ numero_lineas.get(0));
         }
     }
     void estadoDVS11(String lexema){
+        numero_lineas.remove(0);
         if(lexema.equalsIgnoreCase("COR2")){
             cinta.remove(0);
             estadoDVS12(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Eror de sitaxis DVS11");
+            System.err.println("Eror de sitaxis DVS11-line:  "+ numero_lineas.get(0));
         }
     }
     void estadoDVS12(String lexema){
+        numero_lineas.remove(0);
         if(lexema.equalsIgnoreCase("COR1")){
             cinta.remove(0);
             estadoDVS13(cinta.get(0));
@@ -181,10 +193,11 @@ public class DeclaracionVariableString {
             estadoDVS9();
         }else{
             estado=false;
-            System.err.println("Eror de sitaxis DVS12"); 
+            System.err.println("Eror de sitaxis DVS12-line:  "+ numero_lineas.get(0)); 
         }
     }
     void estadoDVS13(String lexema){
+        numero_lineas.remove(0);
         if(lexema.equals("VALORNUM")||lexema.equals("VARIABLE")||lexema.equals("FUNCION")){
             cinta.remove(0);
             estadoDVS14(cinta.get(0));
@@ -193,34 +206,38 @@ public class DeclaracionVariableString {
             estadoDVS6(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Error de sitaxis DVS13");
+            System.err.println("Error de sitaxis DVS13-line:  "+ numero_lineas.get(0));
         }
     }
     void estadoDVS14(String lexema){
+        numero_lineas.remove(0);
         if(lexema.equalsIgnoreCase("COR2")){
             cinta.remove(0);
             estadoDVS6(cinta.get(0));
         }else{
            estado=false;
-           System.err.println("Error de sitaxis DVS14"); 
+           System.err.println("Error de sitaxis DVS14-line:  "+ numero_lineas.get(0)); 
         }
     }
     void estadoDVS15(String lexema){
+        numero_lineas.remove(0);
         if(lexema.equalsIgnoreCase("KEY1")){
             cinta.remove(0);
             estadoDVS4(cinta.get(0));
         }else{
             estado=false;
-            System.err.println("Error de sitaxis DVS15");
+            System.err.println("Error de sitaxis DVS15-line:  "+ numero_lineas.get(0));
         }
     }
     void estadoDVS16(String lexema){
+            numero_lineas.remove(0);
             if(lexema.equals("ENDLINE")){
+              
                 cinta.remove(0);
                 estadoDVS9();  
             }else{
                 estado=false;
-                System.err.println("Error de sitaxis DVS16");
+                System.err.println("Error de sitaxis DVS16-line:  "+ numero_lineas.get(0));
             }
     }
 }
